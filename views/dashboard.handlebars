@@ -1,0 +1,139 @@
+<!-- Green Bar -->
+<div class="container-fluid green-container">
+    <div class="row">
+        <div class="col-span-12 text-center">
+        </div>
+    </div>
+</div>
+
+<!-- USER CONTAINER -->
+<div class="container sub-container-divider">
+    <div class="row">
+        <div class="col-lg-8 user-section">
+            <span class="welcome">Welcome
+                <br>
+            </span>
+            <span id="userName" class="userNameText">{{userData.firstname}} {{userData.lastname}}!</span>
+
+        </div>
+        <div class="col-lg-4 text-right">
+            <button type="button" class="btn btn-primary">DEPOSIT</button>
+
+            <a href="/logout">
+                        <button type="button" class="btn btn-primary">LOGOUT</button>
+
+            </a>
+        </div>
+    </div>
+
+    <!-- USER TABLE FOR TESTING -->
+    <div class="row">
+        <div class='col-12'>
+            <table class="table user-table">
+                <thead>
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{userData.firstname}}</td>
+                        <td>{{userData.lastname}}</td>
+                        <td>{{userData.username}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Favorite Input Section
+<div class="container sub-container-divider">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-2"></div> -->
+<!-- INPUT FORM
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 favcoin-form">
+            <div class="block text-center">
+                <h2 class="text-center">Add your favorite currency to track!</h2>
+                <form class="text-left clearfix mt-30 create-fav1" method='post' action='/dashboard/favcoin' id='favcoin1'>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name='fav1' placeholder="Track Coin 1">
+                    </div>
+                    <button type="submit" class="btn btn-main text-center">Add Fave</button>
+                </form>
+                <form class="text-left clearfix mt-30 create-fav2" method='post' action='/dashboard' id='favcoin2'>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name='fav2' placeholder="Track Coin 2">
+                    </div>
+                    <button type="submit" class="btn btn-main text-center">Add Fave</button>
+                </form>
+                <form class="text-left clearfix mt-30 create-fav3" method='post' action='/dashboard' id='favcoin3'>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name='fav3' placeholder="Track Coin 3">
+                    </div>
+                    <button type="submit" class="btn btn-main text-center">Add Fave</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-2"></div>
+    </div>
+</div>
+-->
+
+<!-- USER FAVE TABLE -->
+<div class="container">
+    <div class='row'>
+        <div class='col-12'>
+            <table class='table user-table' id='favorite-table'>
+                <thead>
+                    <tr>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Balance(USD)</th>
+                        <th scope="col">Percent profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- USER TABLE OF TOP COINS IN DB
+    <div class="row">
+        <div class="col-12">
+            <table class="table user-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Symbol</th>
+                        <th scope="col">Price (USD)</th>
+                        <th scope="col">Total Supply</th>
+                        <th scope="col">Percent Change (24H)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each coinData}}
+                    <tr>
+                        <td>{{this.rank}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.symbol}}</td>
+                        <td>{{this.price_usd}}</td>
+                        <td>{{this.total_supply}}</td>
+                        <td>{{this.percent_change_24h}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+-->
+    <br>
+
+    <!-- COIN TRACKER CONTAINER -->

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API Test</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+</head>
+<body>
+	
+	<div class="container-fluid">
+		
+		<div class="jumbotron" style="background-color: blue; color: white">
+        	<h1 class="text-center">API TEST</h1>
+      	</div>
+
+      	<div class="row">
+      		<div class="col-md-12">
+      			<div class="panel panel-primary">
+      				<div class="panel-heading">
+      					<h2 class="panel-title">Tracker</h2>
+      				</div>
+      				<div class="panel-body">
+						<table class="table table-hover" id="coin-tracker">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Symbol</th>
+									<th>rank</th>
+									<th>Price</th>
+									<th>Market Cap</th>
+									<th>Percent Change(24h)</th>
+								</tr>	
+							</thead>
+							<tbody>								
+							</tbody>							
+						</table>
+      				</div>
+      			</div>
+      		</div>
+      	</div>
+
+		<button type="button" id="generate" class="btn btn-primary">Generate</button>
+
+	</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+  
+
+//$("#generate").on("click", function(event) {
+
+//event.preventDefault();
+
+var coinMarketApi = "https://api.coinmarketcap.com/v1/ticker/?limit=0"
+
+$.ajax({
+                url: coinMarketApi,
+                method: "GET"
+            })
+
+ .done(function(response) {
+
+ var results = response;
+
+ console.log(results);
+
+for (var i = 0; i < results.length; i++) {
+	
+	var name = results[i].name;
+
+	var symbol = results[i].symbol;
+
+	var rank = results[i].rank;
+
+	var price = results[i].price_usd;
+
+	var market = results[i].market_cap_usd;
+
+	var percent = results[i].percent_change_24h;
+
+	$("#coin-tracker > tbody").append("<tr><td>" + name + "</td><td>" + symbol + "</td><td>" +
+  rank + "</td><td>" + price + "</td><td>" + market + "</td><td>" + percent + "</td></tr>");
+}
+
+//});
+  $('#coin-tracker').DataTable({
+    	"paging":   true
+    });
+});
+	
+});
+
+
+
+
+
+</script>
+
+</body>
+</html>
