@@ -1,6 +1,15 @@
 /* initial starter file */
 
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,700,900");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body {
+  width: 100%;
+  overflow-x: hidden;
+}
 body {
   --nav-height: 100px;
   line-height: 1.4;
@@ -1086,4 +1095,55 @@ span#userName {
   position: absolute;
   bottom: -15px;
   left: 0;
+}
+
+/* customized about */
+.about_title {
+  font-size: 30px;
+  line-height: 1;
+  text-align: left;
+  color: #fff;
+  background-image: url(/assets/images/About_Line.png);
+  padding: 80px 40px 200px;
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-transform: uppercase;
+}
+.about_img {
+  margin-block-end: 63px;
+}
+section.referral_commision {
+  background-color: #181d32;
+}
+.text-center.title.d-block {
+  font-size: 30px;
+  line-height: 1;
+  color: #fff;
+  width: 100%;
+  padding: 57px 0 40px;
+}
+ul.percents {
+  padding: 0 0 45px;
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+ul.percents li {
+  width: 120px;
+  height: 120px;
+  box-shadow: 0 3px 20px 0 rgb(0 0 0 / 16%);
+  background-color: #00a4b0;
+  display: inline-block;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 120px;
+  letter-spacing: 1.4px;
+  text-align: center;
+  color: #fff;
+  font-family: Roboto;
+  border-radius: 100px;
+  margin-right: 36px;
 }
