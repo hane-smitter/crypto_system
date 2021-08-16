@@ -2,6 +2,7 @@
 
 // Setting up dependencies
 var db = require('../models');
+const axios = require('axios');
 
 // Setting up routes
 module.exports = function (app) {
@@ -75,5 +76,32 @@ module.exports = function (app) {
     });
 
   });
+
+  //get data from the coin market
+  app.get("/api/coin-market", async function(req, res) {
+    let headers = {};
+    const coinApiKeyHeader = 'X-CMC_PRO_API_KEY';
+    let url;
+    if(process.env.COINMARKETAPIKEY) {
+      url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=50';
+      headers[coinApiKeyHeader] = process.env.COINMARKETAPIKEY;
+    } else {
+      headers[coinApiKeyHeader] = 'b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c';
+      url = 'https://sandbox-api.coinmarketcap.com//v1/cryptocurrency/listings/latest?limit=50';
+    }
+
+    try {
+      const { data:coinMarketRes } = await axios({
+        method: 'GET',
+        headers,
+        url
+      });
+
+      res.send(coinMarketRes.data);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send(err.message);
+    }
+  })
 
 };

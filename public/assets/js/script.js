@@ -29,32 +29,31 @@ function refreshPage() {
 
 
 $(document).ready(function () {
-	//$("#generate").on("click", function(event) {
-	//event.preventDefault();
-	var coinMarketApi = "https://api.coinmarketcap.com/v1/ticker/?limit=0"
 	$.ajax({
-		url: coinMarketApi,
-		method: "GET"
+		url: '/api/coin-market',
+		method: "GET",
 	}).done(function (response) {
 		var results = response;
 		console.log(results);
-		for (var i = 0; i < results.length; i++) {
-			var name = results[i].name;
-			var symbol = results[i].symbol;
-			var rank = results[i].rank;
-			var price = results[i].price_usd;
-			var market = results[i].market_cap_usd;
-			var percent = results[i].percent_change_24h;
-			$("#coin-tracker > tbody").append("<tr><td>" + name + "</td><td>" + symbol + "</td><td>" +
-				rank + "</td><td>" + price + "</td><td>" + market + "</td><td>" + percent + "</td><td> <button id=" + symbol + " onClick='makeFavorite(this.id);refreshPage()'>Save</button> </td></tr>");
+		if($('#sample-transactions')) {
+			for (var i = 0; i < results.length; i++) {
+				var name = results[i].name;
+				var symbol = results[i].symbol;
+				var rank = results[i].cmc_rank;
+				var price = results[i].quote.USD.price;
+				var market = results[i].quote.USD.market_cap;
+				var percent = results[i].quote.USD.percent_change_24h;
+				$("#sample-transactions #table-body").append("<tr><td>" + name + "</td><td>" + symbol + "</td><td>" +
+					rank + "</td><td>" + price + "</td><td>" + market + "</td><td>" + percent + "</td><td> <button class='btn btn-outline-primary' id=" + symbol + " onClick='makeFavorite(this.id);refreshPage();'>Save</button> </td></tr>");
+			}
+			$('#sample-transactions').DataTable({
+				"paging": true
+			});
 		}
-		//});
-		$('#coin-tracker').DataTable({
-			"paging": true
-		});
 	});
 
-	$.ajax("/api/favorites", {
+
+	/* $.ajax("/api/favorites", {
 		method: "GET"
 	}).done(
 		function (response) {
@@ -76,6 +75,6 @@ $(document).ready(function () {
 					}
 				});
 			}
-		});
+		}); */
 
 });

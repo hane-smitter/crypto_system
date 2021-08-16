@@ -2,6 +2,8 @@
 
 // Setting up dependencies
 var path = require('path');
+const axios = require('axios');
+
 var db = require('../models');
 
 // setting up Routes
