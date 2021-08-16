@@ -38,6 +38,10 @@ module.exports = function (app) {
   app.get("/contact", function (req, res) {
     res.render("contact");
   })
+  //about page
+  app.get("/about", function (req, res) {
+    res.render("about");
+  })
   // route for actual API TEST
   app.get("/apiTest", function (req, res) {
     res.sendFile(path.join(__dirname, "/../public/test/test-server.js"));
